@@ -29,7 +29,7 @@ namespace MvcWebIdentity.Controllers
                           Problem("Entity set 'AppDbContext.Alunos'  is null.");
         }
 
-        [Authorize(Roles ="User, Admin, Gerente")]
+        [Authorize(Policy = "RequireUserAdminGerenteRole")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Alunos == null)
@@ -47,7 +47,8 @@ namespace MvcWebIdentity.Controllers
             return View(aluno);
         }
 
-        [Authorize(Roles = "User, Admin, Gerente")]
+        [Authorize(Policy = "RequireUserAdminGerenteRole")]
+
         public IActionResult Create()
         {
             return View();
@@ -120,7 +121,7 @@ namespace MvcWebIdentity.Controllers
             return View(aluno);
         }
 
-        [Authorize(Roles = "Admin, Gerente")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Alunos == null)

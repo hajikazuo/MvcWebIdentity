@@ -65,7 +65,7 @@ namespace MvcWebIdentity.Services
                 {
                     await _userManager.AddToRoleAsync(user, "User");
                 }
-            }
+            } 
 
             if (await _userManager.FindByEmailAsync("admin@localhost") == null)
             {
